@@ -36,6 +36,8 @@ var timeArray = ["5:30 AM", "5:45 AM", "6:00 AM", "6:15 AM", "6:30 AM", "6:45 AM
 
 // Classic D3... Select non-existent elements, bind the data, append the elements, and apply attributes
 
+loadPaths()
+
 function loadPaths(index) {
   pathsUpdateTime = pathsUpdateTime + 1;
   d3.json('GeoJSON/contours_wgs84_apr25.geojson', function(error, mapData) {
