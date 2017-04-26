@@ -4,9 +4,13 @@
 	<title>Vimy Ridge</title>
 	<meta charset="utf-8"/>
 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 	<!-- Chroniton time slider code from https://github.com/arankek/chroniton -->
 	<script src="chroniton/chroniton-only.js"></script>
 	<link href="chroniton/chroniton.css" rel="stylesheet">
+
+	<script src="d3-slider/d3.slider.js"></script>
+	<link href="d3-slider/d3.slider.css" rel="stylesheet">
 
   <!-- <script src="GeoJSON\contours_wgs84_apr20.geojson"></script> -->
 </head>
@@ -32,11 +36,30 @@
 		width: 600px;
 		height: 50px;
 	}
+	#sliderContainer {
+		position: relative;
+		left: 50%;
+		margin-left: -300px;
+		bottom: 20px;
+		width: 600px;
+		height: 50px;
+	}
 </style>
 <body>
 	<h1>Vimy Ridge</h1>
 	<h2></h2>
 	<div id="map"></div>
+	<div id="option">
+		<input 	type="button"
+						value="Update"
+						onclick="loadPaths()" />
+	</div>
+	<div id="sliderContainer">
+			<input id="timeslide" type="range" min="0" max="9" value="0" step="1"/><br>
+			<span id="range">5:30 AM</span>
+	</div>
+	<div id="slider1"></div>
+	<div id="slider2"></div>
 	<div id="slider"></div>
 	<!-- Page elements and content go here. -->
 	<script src="index.js"></script>
