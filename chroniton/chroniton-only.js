@@ -28,7 +28,7 @@ var handleRadius = 6,
 
 function chroniton() {
   var margin = {top: 10, right: 20, bottom: 20, left: 20},
-    domain = [new Date("1917-04-09T05:30Z"), new Date("1917-04-09T23:00Z")],
+    domain = [new Date('1/1/2000'), new Date()],
     width = 660,
     height = 50,
 
@@ -43,7 +43,7 @@ function chroniton() {
     // internal state
     playLastTick = null,
 
-    labelFormat = d3.time.format("%B %dth, %I:%M %p"),
+    labelFormat = d3.time.format("%Y-%m-%d"),
 
     // scales
     xScale = d3.time.scale().clamp(true),

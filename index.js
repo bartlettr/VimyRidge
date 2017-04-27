@@ -26,33 +26,20 @@ var projection = d3.geo.mercator()
 var geoPath = d3.geo.path()
     .projection( projection );
 
-//set global variable to move through timecodes
-var pathsUpdateTime = -1
-
-//variables for time slider
-var inputValue = null;
-//var foo = new Array(35);
-var timeArray = ["5:30 AM", "5:45 AM", "6:00 AM", "6:15 AM", "6:30 AM", "6:45 AM", "7:00 AM", "7:15 AM", "7:30 AM", "7:45 AM"];
-
-// Classic D3... Select non-existent elements, bind the data, append the elements, and apply attributes
-
-loadPaths()
-
-function loadPaths(index) {
-  pathsUpdateTime = pathsUpdateTime + 1;
+function loadPaths(timeCode) {
   d3.json('GeoJSON/contours_wgs84_apr25.geojson', function(error, mapData) {
     var paths = mapData.features;
     g.selectAll("path").remove();
-    g.selectAll( "path" )
+    g.selectAll("path")
         .data(paths.filter(function(path) {
-           return path.properties.TimeCode === pathsUpdateTime;
+           return path.properties.TimeCode === timeCode;
          }))
         .enter()
-        .append( "path" )
-        .attr( "fill", "none")
-        .attr( "stroke", getStroke)
-        .attr( "stroke-width", 2)
-        .attr( "d", geoPath )
+        .append("path")
+        .attr("fill", "none")
+        .attr("stroke", getStroke)
+        .attr("stroke-width", 2)
+        .attr("d", geoPath )
         .on("click", onClick)
         .on("mouseover", mouseOver)
         .on("mouseout", mouseOut);
@@ -97,6 +84,8 @@ function loadPaths(index) {
       update(+this.value);
   });
 
+
+
   // update the fill of each SVG of class "incident" with value
   function update(value) {
       document.getElementById("range").innerHTML=timeArray[value];
@@ -106,17 +95,22 @@ function loadPaths(index) {
   }
 }
 
-/*
-d3.json('GeoJSON/contours_wgs84_apr25.geojson', function(error, slider) {
-  d3.select("#slider") // (1)
-  .call(
-    chroniton()  // (2)
-      //.domain[new Date("1917-04T05:30:00Z"), new Date("1917-04T11:00:00Z")]  // (3)
-      //.labelFormat = d3.time.format("%B %dth, %I:%M %p") //Hour and Minute
-      .width(500)  // 500 pixels wide
-      .playButton(true)
-      .playbackRate(0.2)
-      .loop(false)
-      .on('change', loadPaths)
-  );
-})*/
+function findSeconds(nowHour) {
+  var zeroHour = new Date('1917-04-09T05:30Z');
+  var seconds = (nowHour.getTime() - zeroHour.getTime()) / 1000;
+  var minutes = seconds / 60;
+  var timeCode = Math.floor(minutes / 15);
+  loadPaths(timeCode);
+}
+
+d3.select("#slider")
+.call(
+  chroniton()
+    .domain([new Date("1917-04-09T05:30Z"), new Date("1917-04-09T16:00Z")])
+    .labelFormat(d3.time.format("%B %dth, %I:%M %p %Z"))
+    .width(500)
+    .playButton(true)
+    .playbackRate(0.5)
+    .loop(false)
+    .on('change', findSeconds)
+);
