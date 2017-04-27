@@ -1,0 +1,32 @@
+h1, h2 {
+    position: absolute;
+    left: 20px;
+    font-size: 2em;
+    font-weight: 100;
+    width: 400px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    top: 60px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#slider {
+    position: absolute;
+    left: 50%;
+    margin-left: -300px;
+    bottom: 20px;
+    width: 600px;
+    height: 50px;
+}
+
+#sliderContainer {
+    position: relative;
+    left: 50%;
+    margin-left: -300px;
+    bottom: 20px;
+    width: 600px;
+    height: 50px;
+}
