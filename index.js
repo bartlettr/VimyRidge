@@ -16,7 +16,7 @@ var geoPath = d3.geo.path()
     .projection(projection);
 
 var paths = [];
-d3.json('GeoJSON/contours_wgs84_apr25.geojson', function(error, mapData) {
+d3.json('GeoJSON/contours_wgs84_apr28.geojson', function(error, mapData) {
     paths = mapData.features;
     displayPath(0);
 });
