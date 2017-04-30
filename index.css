@@ -12,21 +12,45 @@ body {
     height: 100%
 }
 
+a {
+    color: #206cdf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .info-title {
     font-size: 2em;
     font-weight: 100;
 }
 
 .info-content {
-    font-size: 1em;
+    max-height: 300px;
+    overflow: hidden;
+    transition: max-height 0.75s ease-in-out;
+}
+
+.info-content.hidden {
+    max-height: 0;
+}
+
+.info-heading {
     margin-top: 10px;
+    font-weight: bold;
+}
+
+.info-close {
+    float: right;
+    margin-top: 5px;
 }
 
 #map {
     height: 100%
 }
 
-#info-container {
+.info-container {
     position: absolute;
     top: 20px;
     left: 20px;

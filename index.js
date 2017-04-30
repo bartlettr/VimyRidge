@@ -23,11 +23,19 @@ var overlay = L.d3SvgOverlay(function(sel, proj) {
 	    .attr('fill', 'none');
 
     upd.attr('stroke-width', 3 / proj.scale);
-	upd.on("click", onClick);
+	upd.on({
+			'click': onClick,
+  			'mouseover': function(d) {
+				d3.select(this).style('cursor', 'pointer')
+  			},
+			'mouseout': function(d) {
+				d3.select(this).style('cursor', '')
+  			}
+		});
 });
 
 function getStroke(data) {
-    if (data.properties.ObjectiveL === "Jumping off trench") {
+    if (data.properties.ObjectiveL === 'Jumping off trench') {
         return 'orange';
     } else if(data.properties.ObjectiveL) {
         return data.properties.ObjectiveL.toLowerCase();
@@ -42,18 +50,27 @@ d3.json("GeoJSON/contours_wgs84_apr25.geojson", function(data) {
 });
 
 function onClick(data) {
-	d3.selectAll('path').attr('stroke', getStroke);
-    d3.select(this).style("stroke", "cyan");
+	$('.info-content').removeClass('hidden');
+
+	//d3.selectAll('path').attr('stroke', getStroke);
+    //d3.select(this).style("stroke", "cyan");
+
+	$('.info-content-inner').empty();
 
     if (data.properties.LineCode) {
-      d3.select("#info-description").text(data.properties.BattalionR + " reached " + data.properties.ObjectiveL
-        + " line at " + data.properties.TimeArrive);
+		var objectiveTitle = $('<div/>').addClass('info-heading').text('Objective');
+	 	var objective = $('<div/>').text(data.properties.BattalionR + " reached " + data.properties.ObjectiveL
+          + " line at " + data.properties.TimeArrive);
+		$('.info-content-inner').append(objectiveTitle).append(objective);
 
-		d3.select("#info-source").html(data.properties.Quote + " (Source: <a href='" +  data.properties.TimeSour_1
+		var sourceTitle = $('<div/>').addClass('info-heading').text('Source');
+		var source = $('<div/>').html(data.properties.Quote + " (Source: <a href='" +  data.properties.TimeSour_1
             + "'target='_blank'>" + data.properties.TimeSource + "</a>)");
+		$('.info-content-inner').append(sourceTitle).append(source);
     } else {
-        d3.select("#info-description").text("Estimated front line at " + data.properties.TimeAMPM);
-		d3.select("#info-source").html('');
+		var objectiveTitle = $('<div/>').addClass('info-heading').text(' ');
+		var objective = $('<div/>').text("Estimated front line at " + data.properties.TimeAMPM);
+		$('.info-content-inner').append(objectiveTitle).append(objective);
     }
 }
 
@@ -78,3 +95,7 @@ d3.select("#slider")
         .playbackRate(0.5)
         .loop(false)
         .on('change', onChronitronChange));
+
+$('.info-close a').click(function() {
+	$('.info-content').addClass('hidden');
+});
