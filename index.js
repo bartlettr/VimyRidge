@@ -1,4 +1,4 @@
-var map =  L.map('map', {zoomControl: false, center: [50.36, 2.79], zoom: 13});
+var map =  L.map('map', {zoomControl: false, center: [50.36, 2.79], zoom: 13, minZoom: 3, maxZoom: 18});
 L.control.zoom({position: 'bottomleft'}).addTo(map);
 
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
@@ -9,6 +9,8 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x
 var paths = [];
 var currentTimeCode = 0;
 
+var strokeWidths = {'s13': 2, 's14': 2, 's15': 1, 's16': 0.25};
+
 var overlay = L.d3SvgOverlay(function(sel, proj) {
 	var pathsAtTimeCode = paths.filter(function(path) {
         return path.properties.TimeCode === currentTimeCode;
@@ -17,21 +19,24 @@ var overlay = L.d3SvgOverlay(function(sel, proj) {
 	var upd = sel.selectAll('path')
 		.data(pathsAtTimeCode)
 		.enter()
-	    .append('path')
-	    .attr('d', proj.pathFromGeojson)
-	    .attr('stroke', getStroke)
-	    .attr('fill', 'none');
+		.append('path')
+		.attr('d', proj.pathFromGeojson)
+		.attr('stroke', getStroke)
+		.attr('fill', 'none');
 
-    upd.attr('stroke-width', 3 / proj.scale);
 	upd.on({
-			'click': onClick,
-  			'mouseover': function(d) {
-				d3.select(this).style('cursor', 'pointer')
-  			},
-			'mouseout': function(d) {
-				d3.select(this).style('cursor', '')
-  			}
-		});
+		'click': onClick,
+  		'mouseover': function(d) {
+			d3.select(this).style('cursor', 'pointer')
+  		},
+		'mouseout': function(d) {
+			d3.select(this).style('cursor', '')
+  		}
+	});
+
+	var strokeWidth = 2 / proj.scale;
+	sel.selectAll('path')
+		.attr('stroke-width', strokeWidth);
 });
 
 function getStroke(data) {
@@ -43,7 +48,7 @@ function getStroke(data) {
     return 'gray';
 }
 
-d3.json("GeoJSON/contours_wgs84_apr25.geojson", function(data) {
+d3.json('GeoJSON/contours_wgs84_apr28.geojson', function(data) {
     paths = data.features;
 	map.removeLayer(overlay)
 	overlay.addTo(map);
