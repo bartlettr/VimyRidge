@@ -1,0 +1,77 @@
+html {
+    height: 100%
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0
+}
+
+#map {
+    height: 100%
+}
+
+a {
+    color: #206cdf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.info-title {
+    font-size: 2em;
+    font-weight: 100;
+}
+
+.info-content {
+    max-height: 350px;
+    overflow: hidden;
+    transition: max-height 0.75s ease-in-out;
+}
+
+.info-content.hidden {
+    max-height: 0;
+}
+
+.info-heading {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.info-close {
+    float: right;
+    margin-top: 5px;
+}
+
+#map {
+    height: 100%
+}
+
+.info-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 350px;
+    padding: 20px;
+    background: rgba(255,255,255, 0.85);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#slider-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 500px;
+    height: 80px;
+    margin-left: -250px;
+    background: rgba(255,255,255, 0.85);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#slider {
+    margin: 10px 20px;
+}

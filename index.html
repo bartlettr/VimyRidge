@@ -1,57 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Vimy Ridge</title>
-	<meta charset="utf-8"/>
-	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-	<!-- Chroniton time slider code from https://github.com/arankek/chroniton -->
-	<script src="chroniton/chroniton-only.js"></script>
+    <title>Vimy Ridge</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css"/>
 	<link href="chroniton/chroniton.css" rel="stylesheet">
-
-	<script src="d3-slider/d3.slider.js"></script>
-	<link href="d3-slider/d3.slider.css" rel="stylesheet">
-
-  <!-- <script src="GeoJSON\contours_wgs84_apr20.geojson"></script> -->
+    <link href="index.css" rel="stylesheet" type="text/css"/>
 </head>
-<style>
-	h1, h2 {
-		position: absolute;
-		left: 10px;
-		font-size: 2em;
-		font-weight: 100;
-		width: 400px;
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	}
-	h2 {
-		top: 60px;
-		font-size: 1em;
-		font-weight: bold;
-	}
-	#slider {
-		position: absolute;
-		left: 50%;
-		margin-left: -300px;
-		bottom: 20px;
-		width: 600px;
-		height: 50px;
-	}
-	#sliderContainer {
-		position: relative;
-		left: 50%;
-		margin-left: -300px;
-		bottom: 20px;
-		width: 600px;
-		height: 50px;
-	}
-
-	
-</style>
 <body>
-	<h1>Vimy Ridge</h1>
-	<h2></h2>
-	<div id="map"></div>
-	<div id="slider"></div>
-	<script src="index.js"></script>
+    <div id="map"></div>
+    <div id="slider-container">
+        <div id="slider"></div>
+    </div>
+    <div class="info-container">
+        <div class="info-title">Vimy Ridge</div>
+    	<div class="info-content hidden">
+            <div class="info-content-inner"></div>
+            <div class="info-close hidden"><a href="#">close</a></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js"></script>
+    <script src="L.D3SvgOverlay/L.D3SvgOverlay.min.js"></script>
+    <script src="chroniton/chroniton-only.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
