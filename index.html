@@ -3,7 +3,7 @@
 <head>
     <title>Vimy Ridge</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css"/>
-	<link href="chroniton/chroniton.css" rel="stylesheet">
+	  <link href="chroniton/chroniton.css" rel="stylesheet">
     <link href="index.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -11,27 +11,32 @@
     <div id="slider-container">
         <div id="slider"></div>
     </div>
-    <div class="info-container">
+    <div class="container info-container">
         <div class="info-title">Vimy Ridge</div>
     	<div class="info-content hidden">
             <div class="info-content-inner"></div>
-            <div class="info-close hidden"><a href="#">close</a></div>
+            <div class="container-close"><a href="#">close</a></div>
         </div>
     </div>
 
-    <div class="credits-container">
+    <div class="container credits-container">
         <div class="credits-title">Credits</div>
-      <div class="credits-content hidden">
-            <div class="credits-content-inner"></div>
-            <div class="info-close hidden"><a href="#">close</a></div>
+        <div class="credits-content hidden">
+            <div class="credits-content-inner">
+                <div><span class="credit-name">Rebecca Bartlett</span> <span class="credit-desc">Librarian of Awesomeness</span></div>
+                <div><span class="credit-name">Trevor Ford</span> <span class="credit-desc">Token Conservative</span></div>
+                <div><span class="credit-name">James Ellwood</span> <span class="credit-desc">Code Wizard</span></div>
+            </div>
+            <div class="container-close"><a href="#">close</a></div>
         </div>
     </div>
-	
+
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-		crossorigin="anonymous"></script>
+		    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js"></script>
+    <script src="https://use.fontawesome.com/4361aa0dba.js"></script>
     <script src="L.D3SvgOverlay/L.D3SvgOverlay.min.js"></script>
     <script src="chroniton/chroniton-only.js"></script>
     <script src="index.js"></script>

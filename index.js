@@ -138,6 +138,14 @@ d3.select("#slider")
 
 L.control.layers({}, {"Front lines": overlay}).addTo(map);
 
-$('.info-close a').click(function() {
+$('.info-content .container-close a').click(function() {
 	$('.info-content').addClass('hidden');
+});
+
+$('.credits-content .container-close a').click(function() {
+	$('.credits-content').addClass('hidden');
+});
+
+$('.credits-title').click(function() {
+	$('.credits-content').removeClass('hidden');
 });
