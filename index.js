@@ -124,7 +124,7 @@ d3.select("#slider")
 
 L.control.layers({}, {"Vimy ed. 8A": VimyMap, "Roclincourt ed. 6A": RocMap, "Front lines": overlay}).addTo(map);
 
-$('.info-content .info-close a').click(function() {
+$('.info-content .container-close a').click(function() {
 	$('.info-content').addClass('hidden');
 });
 
