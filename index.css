@@ -21,19 +21,35 @@ a:hover {
     text-decoration: underline;
 }
 
+.container {
+  position: absolute;
+  background: rgba(255,255,255, 0.85);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.info-container {
+    top: 20px;
+    left: 20px;
+    padding: 20px;
+}
+
 .info-title {
     font-size: 2em;
     font-weight: 100;
 }
 
 .info-content {
-    max-height: 350px;
+    max-height: 400px;
+    max-width: 350px;
     overflow: hidden;
-    transition: max-height 0.75s ease-in-out;
+    transition: max-width 0.3s ease-in-out, max-height 0.4s 0.3s ease-in-out;
 }
 
 .info-content.hidden {
     max-height: 0;
+    max-width: 0;
+    transition: max-height 0.3s ease-in-out, max-width 0.4s 0.3s ease-in-out;
 }
 
 .info-heading {
@@ -41,24 +57,41 @@ a:hover {
     font-weight: bold;
 }
 
-.info-close {
+.credits-container {
+    bottom: 30px;
+    right: 20px;
+    padding: 10px;
+}
+
+.credits-title {
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.credits-content {
+    max-height: 100px;
+    max-width: 300px;
+    overflow: hidden;
+    transition: max-width 0.3s ease-in-out, max-height 0.3s 0.3s ease-in-out;
+}
+
+.credits-content.hidden {
+    max-height: 0;
+    max-width: 0;
+    transition: max-height 0.3s ease-in-out, max-width 0.3s 0.3s ease-in-out;
+}
+
+.credit-name {
+    font-weight: 200;
+}
+
+.credit-desc {
+  font-weight: 100;
+}
+
+.container-close {
     float: right;
     margin-top: 5px;
-}
-
-#map {
-    height: 100%
-}
-
-.info-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 350px;
-    padding: 20px;
-    background: rgba(255,255,255, 0.85);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #slider-container {
