@@ -8,22 +8,18 @@ var basemap = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/li
 });
 basemap.addTo(map);
 
-/*
-var VimyMapUrl = 'img/vimy8A.jpg',
+var VimyMapUrl = 'img/vimy8A_sm.jpg',
     VimyMapBounds = [[50.349990160, 2.7284290992], [50.413454582, 2.8625042007]] //SW & NE extents, respectively
 
-L.imageOverlay(VimyMapUrl, VimyMapBounds, {
+var VimyMap = L.imageOverlay(VimyMapUrl, VimyMapBounds, {
   attribution : '<a href="http://digitalarchive.mcmaster.ca/islandora/object/macrepo%3A68547/-/collection">Vimy</a> & <a href="http://digitalarchive.mcmaster.ca/islandora/object/macrepo%3A4082/-/collection">Roclincourt</a> 1:10,000 trench maps from McMaster University Digital Archive',
-  opacity : 0.8
 }).addTo(map);
 
-var RocMapUrl = 'img/roclincourt6A.jpg',
+var RocMapUrl = 'img/roclincourt6A_sm.jpg',
     RocMapBounds = [[50.30398939, 2.73071554], [50.367663462, 2.8648959090]] //SW & NE extents, respectively
 
 var RocMap = L.imageOverlay(RocMapUrl, RocMapBounds, {
-  opactity : 0.8
 }).addTo(map);
-*/
 
 var paths = [];
 var currentTimeCode = 0;
@@ -74,15 +70,11 @@ function getStroke(data) {
 d3.json('GeoJSON/may1_frontlines_final.geojson', function(data) {
     paths = data.features;
 	map.removeLayer(overlay)
-	overlay.addTo(map);
+	overlay.addTo(map).bringToFront();
 });
 
 function onClick(data) {
 	$('.info-content').removeClass('hidden');
-
-	//d3.selectAll('path').attr('stroke', getStroke);
-    //d3.select(this).style("stroke", "cyan");
-
 	$('.info-content-inner').empty();
 
     if (data.properties.LineCode) {
@@ -120,12 +112,6 @@ function onChronitronChange(chronitronDate) {
 	overlay.addTo(map);
 }
 
-//L.geojson('GeoJSON/arearesponsibility_battalions_wgs84.geojson').addto(map);
-
-/*	var pathsAtTimeCode = paths.filter(function(path) {
-        return path.properties.TimeCode === currentTimeCode;
-    });*/
-
 d3.select("#slider")
     .call(chroniton()
         .domain([startDate, endDate])
@@ -136,9 +122,9 @@ d3.select("#slider")
         .loop(false)
         .on('change', onChronitronChange));
 
-L.control.layers({}, {"Front lines": overlay}).addTo(map);
+L.control.layers({}, {"Vimy ed. 8A": VimyMap, "Roclincourt ed. 6A": RocMap, "Front lines": overlay}).addTo(map);
 
-$('.info-content .container-close a').click(function() {
+$('.info-content .info-close a').click(function() {
 	$('.info-content').addClass('hidden');
 });
 

@@ -12,6 +12,10 @@ body {
     height: 100%
 }
 
+svg {
+  z-index: 10;
+}
+
 a {
     color: #206cdf;
     text-decoration: none;
