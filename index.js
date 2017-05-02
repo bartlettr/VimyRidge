@@ -12,7 +12,7 @@ var VimyMapUrl = 'img/vimy8A_sm.jpg',
     VimyMapBounds = [[50.349990160, 2.7284290992], [50.413454582, 2.8625042007]] //SW & NE extents, respectively
 
 var VimyMap = L.imageOverlay(VimyMapUrl, VimyMapBounds, {
-  attribution : '<a href="http://digitalarchive.mcmaster.ca/islandora/object/macrepo%3A68547/-/collection">Vimy</a> & <a href="http://digitalarchive.mcmaster.ca/islandora/object/macrepo%3A4082/-/collection">Roclincourt</a> 1:10,000 trench maps from McMaster University Digital Archive',
+  attribution : '<a href="http://digitalarchive.mcmaster.ca/islandora/object/macrepo%3A68547/-/collection">Vimy 36cSW3 ed. 8A</a> & <a href="http://digitalarchive.mcmaster.ca/islandora/object/macrepo%3A4082/-/collection">Roclincourt 51bNW1 ed. 6A</a> trench maps from <a href="http://digitalarchive.mcmaster.ca/islandora/object/macrepo%3A1">McMaster University Digital Archive</a>',
 }).addTo(map);
 
 var RocMapUrl = 'img/roclincourt6A_sm.jpg',
