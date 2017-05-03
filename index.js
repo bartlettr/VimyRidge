@@ -70,7 +70,7 @@ function getStroke(data) {
 d3.json('GeoJSON/may1_frontlines_final.geojson', function(data) {
     paths = data.features;
 	map.removeLayer(overlay)
-	overlay.addTo(map).bringToFront();
+	overlay.addTo(map);
 });
 
 function onClick(data) {
@@ -100,8 +100,8 @@ function onClick(data) {
     }
 }
 
-var startDate = new Date('1917-04-09T05:30Z');
-var endDate = new Date("1917-04-09T15:00Z");
+var startDate = new Date(Date.UTC(1917, 3, 9, 5, 30));
+var endDate = new Date(Date.UTC(1917, 3, 9, 15, 30));
 
 function onChronitronChange(chronitronDate) {
     var seconds = (chronitronDate.getTime() - startDate.getTime()) / 1000;
@@ -115,7 +115,7 @@ function onChronitronChange(chronitronDate) {
 d3.select("#slider")
     .call(chroniton()
         .domain([startDate, endDate])
-        .labelFormat(d3.time.format("%B %dth, %I:%M %p %Z"))
+        .labelFormat(d3.time.format.utc("%B %dth, %I:%M %p"))
         .width(460)
         .playButton(true)
         .playbackRate(0.5)
