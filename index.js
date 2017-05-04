@@ -24,8 +24,6 @@ var RocMap = L.imageOverlay(RocMapUrl, RocMapBounds, {
 var paths = [];
 var currentTimeCode = 0;
 
-var strokeWidths = {'s13': 2, 's14': 2, 's15': 1, 's16': 0.25};
-
 var overlay = L.d3SvgOverlay(function(sel, proj) {
 	var pathsAtTimeCode = paths.filter(function(path) {
         if (path.properties.LineCode) {
@@ -53,7 +51,7 @@ var overlay = L.d3SvgOverlay(function(sel, proj) {
   		}
 	});
 
-	var strokeWidth = 2 / proj.scale;
+	var strokeWidth = 2.5 / proj.scale;
 	sel.selectAll('path')
 		.attr('stroke-width', strokeWidth);
 });
@@ -67,7 +65,7 @@ function getStroke(data) {
     return 'gray';
 }
 
-d3.json('GeoJSON/may1_frontlines_final.geojson', function(data) {
+d3.json('GeoJSON/may4_frontlines_final_realtime.geojson', function(data) {
     paths = data.features;
 	map.removeLayer(overlay)
 	overlay.addTo(map);
@@ -80,7 +78,7 @@ function onClick(data) {
     if (data.properties.LineCode) {
 		var objectiveTitle = $('<div/>').addClass('info-heading').text('Objective');
 	 	var objective = $('<div/>').text(data.properties.BattalionR + " reached the " + data.properties.ObjectiveL
-          + " line at " + data.properties.TimeArrive);
+          + " line at " + data.properties.TimeArrive + ".");
 		$('.info-content-inner').append(objectiveTitle).append(objective);
 
 		var sourceTitle = $('<div/>').addClass('info-heading').text('Source');

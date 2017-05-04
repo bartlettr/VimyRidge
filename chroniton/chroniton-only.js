@@ -46,7 +46,7 @@ function chroniton() {
     labelFormat = d3.time.format("%Y-%m-%d"),
 
     // scales
-    xScale = d3.time.scale().clamp(true),
+    xScale = d3.time.scale.utc().clamp(true),
     xAxis = d3.svg.axis()
       .scale(xScale)
       .orient('bottom')

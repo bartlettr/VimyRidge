@@ -3,6 +3,7 @@ html {
 }
 
 body {
+    font-family: 'Roboto', sans-serif;
     height: 100%;
     margin: 0;
     padding: 0
@@ -29,7 +30,6 @@ a:hover {
   position: absolute;
   background: rgba(255,255,255, 0.95);
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .info-container {
@@ -40,13 +40,19 @@ a:hover {
 
 .info-title {
     font-size: 2em;
-    font-weight: 100;
+    font-weight: 300;
+}
+
+.info-subtitle {
+  font-size: 1.25em;
+  font-weight: 300;
 }
 
 .info-content {
     max-height: 400px;
     max-width: 350px;
     overflow: hidden;
+    font-weight: 300;
     transition: max-width 0.3s ease-in-out, max-height 0.4s 0.3s ease-in-out;
 }
 
@@ -58,7 +64,7 @@ a:hover {
 
 .info-heading {
     margin-top: 10px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .credits-container {
@@ -68,12 +74,12 @@ a:hover {
 }
 
 .credits-title {
-    font-weight: 100;
+    font-weight: 300;
     cursor: pointer;
 }
 
 .credits-content {
-    max-height: 100px;
+    max-height: 300px;
     max-width: 300px;
     overflow: hidden;
     transition: max-width 0.3s ease-in-out, max-height 0.3s 0.3s ease-in-out;
@@ -86,11 +92,11 @@ a:hover {
 }
 
 .credit-name {
-    font-weight: 200;
+
 }
 
 .credit-desc {
-  font-weight: 100;
+  font-weight: 300;
 }
 
 .container-close {
