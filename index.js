@@ -116,7 +116,7 @@ d3.select("#slider")
         .labelFormat(d3.time.format.utc("%B %dth, %I:%M %p"))
         .width(460)
         .playButton(true)
-        .playbackRate(0.5)
+        .playbackRate(0.1)
         .loop(false)
         .on('change', onChronitronChange));
 
