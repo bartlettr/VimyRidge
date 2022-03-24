@@ -48,6 +48,10 @@ a:hover {
   font-weight: 300;
 }
 
+.info-subsubtitle {
+  font-weight: 300;
+}
+
 .info-content {
     max-height: 400px;
     max-width: 350px;
